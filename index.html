@@ -590,16 +590,131 @@
       position: relative;
     }
 
-    .install-big-icon {
-      width: 180px; height: 180px;
-      background: linear-gradient(135deg, var(--primary-deep), var(--primary));
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 5rem;
+    .install-anim-wrap {
+      width: 220px; height: 220px;
       margin: 0 auto;
-      border: 2px solid var(--border);
-      box-shadow: 0 0 60px var(--glow);
+      position: relative;
       animation: float 5s ease-in-out infinite;
+    }
+
+    /* Orbit rings */
+    .orbit-ring {
+      position: absolute; border-radius: 50%;
+      border: 1.5px solid rgba(0,200,255,0.22);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .orbit-ring-1 { width: 220px; height: 220px; animation: spin-slow 18s linear infinite; border-style: dashed; }
+    .orbit-ring-2 { width: 168px; height: 168px; animation: spin-slow 12s linear infinite reverse; }
+
+    @keyframes spin-slow { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+    /* Orbit dot */
+    .orbit-dot {
+      position: absolute; width: 10px; height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+      top: 50%; left: 50%;
+      transform-origin: 0 0;
+      animation: orbit-move 3s linear infinite;
+    }
+
+    @keyframes orbit-move {
+      from { transform: rotate(0deg) translateX(84px) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(84px) rotate(-360deg); }
+    }
+
+    .orbit-dot-2 {
+      animation: orbit-move2 4.5s linear infinite;
+      background: #FBBF24;
+      box-shadow: 0 0 10px #FBBF24;
+    }
+
+    @keyframes orbit-move2 {
+      from { transform: rotate(180deg) translateX(110px) rotate(-180deg); }
+      to   { transform: rotate(540deg) translateX(110px) rotate(-540deg); }
+    }
+
+    /* Center circle */
+    .install-center {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110px; height: 110px;
+      background: linear-gradient(135deg, #001E80, #0047D3);
+      border-radius: 50%;
+      border: 2px solid rgba(0,200,255,0.5);
+      box-shadow: 0 0 40px rgba(0,200,255,0.35), inset 0 0 30px rgba(0,71,211,0.4);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 4px;
+    }
+
+    /* Fiber lines inside center */
+    .fiber-lines {
+      display: flex; flex-direction: column; align-items: center; gap: 5px;
+    }
+
+    .fiber-line {
+      height: 3px; border-radius: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation: fiber-flow 1.8s ease-in-out infinite;
+    }
+
+    .fiber-line:nth-child(1) { width: 52px; animation-delay: 0s; }
+    .fiber-line:nth-child(2) { width: 36px; animation-delay: 0.3s; }
+    .fiber-line:nth-child(3) { width: 44px; animation-delay: 0.6s; }
+    .fiber-line:nth-child(4) { width: 28px; animation-delay: 0.9s; }
+
+    @keyframes fiber-flow {
+      0%   { opacity: 0.2; transform: scaleX(0.4); }
+      50%  { opacity: 1;   transform: scaleX(1); }
+      100% { opacity: 0.2; transform: scaleX(0.4); }
+    }
+
+    .install-center-icon {
+      font-size: 1.6rem;
+      filter: drop-shadow(0 0 8px rgba(0,200,255,0.8));
+    }
+
+    /* Pulse ring from center */
+    .center-pulse {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      animation: center-expand 2.5s ease-out infinite;
+    }
+
+    .center-pulse:nth-child(2) { animation-delay: 0.8s; }
+    .center-pulse:nth-child(3) { animation-delay: 1.6s; }
+
+    @keyframes center-expand {
+      0%   { width: 110px; height: 110px; opacity: 0.7; }
+      100% { width: 220px; height: 220px; opacity: 0; }
+    }
+
+    /* Floating data packets */
+    .data-packet {
+      position: absolute;
+      width: 28px; height: 14px;
+      background: rgba(0,200,255,0.12);
+      border: 1px solid rgba(0,200,255,0.4);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.38rem; color: var(--accent); font-weight: 700;
+      letter-spacing: 0.03em;
+      animation: packet-float 3s ease-in-out infinite;
+    }
+
+    .data-packet:nth-child(1) { top: 14px; left: 18px;  animation-delay: 0s; }
+    .data-packet:nth-child(2) { top: 14px; right: 18px; animation-delay: 1s; }
+    .data-packet:nth-child(3) { bottom: 18px; left: 22px; animation-delay: 2s; }
+
+    @keyframes packet-float {
+      0%, 100% { opacity: 0.4; transform: translateY(0); }
+      50%       { opacity: 1;   transform: translateY(-6px); }
     }
 
     .install-chips {
@@ -1492,7 +1607,38 @@
 <section id="instalacao">
   <div class="install-grid">
     <div class="install-visual reveal">
-      <div class="install-big-icon">📡</div>
+
+      <div class="install-anim-wrap">
+        <!-- Pulse rings expanding from center -->
+        <div class="center-pulse"></div>
+        <div class="center-pulse"></div>
+        <div class="center-pulse"></div>
+
+        <!-- Orbit rings -->
+        <div class="orbit-ring orbit-ring-1"></div>
+        <div class="orbit-ring orbit-ring-2"></div>
+
+        <!-- Orbit dots -->
+        <div class="orbit-dot"></div>
+        <div class="orbit-dot orbit-dot-2"></div>
+
+        <!-- Floating data packets -->
+        <div class="data-packet">DATA</div>
+        <div class="data-packet">1GB</div>
+        <div class="data-packet">TX</div>
+
+        <!-- Center -->
+        <div class="install-center">
+          <div class="install-center-icon">⚡</div>
+          <div class="fiber-lines">
+            <div class="fiber-line"></div>
+            <div class="fiber-line"></div>
+            <div class="fiber-line"></div>
+            <div class="fiber-line"></div>
+          </div>
+        </div>
+      </div>
+
       <div class="install-chips">
         <span class="chip">✅ ONU Grátis</span>
         <span class="chip">✅ Wi-Fi Grátis</span>
