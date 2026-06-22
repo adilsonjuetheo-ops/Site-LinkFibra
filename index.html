@@ -349,10 +349,106 @@
 
     .plans-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 24px;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
+    }
+
+    /* ── COPA 2026 BANNER ──────────────────── */
+    .copa-banner {
+      background: linear-gradient(135deg, #005c1a 0%, #007a24 40%, #009C3B 100%);
+      border-top: 3px solid #FFDF00;
+      border-bottom: 3px solid #FFDF00;
+      padding: 36px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .copa-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 20 L50 20 L38 29 L43 44 L30 35 L17 44 L22 29 L10 20 L25 20Z' fill='rgba(255,223,0,0.04)'/%3E%3C/svg%3E") repeat;
+      pointer-events: none;
+    }
+
+    .copa-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .copa-left { flex: 1; min-width: 220px; }
+
+    .copa-stars {
+      font-size: 1.3rem;
+      color: #FFDF00;
+      letter-spacing: 4px;
+      display: block;
+      margin-bottom: 8px;
+      text-shadow: 0 0 10px rgba(255,223,0,0.5);
+    }
+
+    .copa-title {
+      font-size: clamp(1.4rem, 3vw, 2.1rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .copa-title span { color: #FFDF00; }
+
+    .copa-sub {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+    }
+
+    .copa-center {
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .copa-trophy {
+      font-size: 5rem;
+      filter: drop-shadow(0 0 20px rgba(255,223,0,0.6));
+      animation: trophy-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes trophy-pulse {
+      0%, 100% { transform: scale(1) rotate(-3deg); }
+      50% { transform: scale(1.06) rotate(3deg); }
+    }
+
+    .copa-right { flex-shrink: 0; }
+
+    .btn-copa {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #FFDF00;
+      color: #005c1a;
+      border-radius: 50px;
+      padding: 13px 28px;
+      font-size: 0.95rem; font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(255,223,0,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-copa:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(255,223,0,0.6); }
+
+    /* ── MASCOTE HERO ─────────────────────── */
+    .hero-mascote {
+      position: absolute; right: 4%; top: 50%;
+      transform: translateY(-50%);
+      width: min(380px, 40vw);
+      z-index: 2;
+      filter: drop-shadow(0 0 40px rgba(0,200,255,0.25));
+      animation: float 6s ease-in-out infinite;
     }
 
     .plan-card {
@@ -914,6 +1010,7 @@
       nav.open { display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: rgba(2,11,46,0.97); border-bottom: 1px solid var(--border); padding: 20px 5%; gap: 16px; }
       .hamburger { display: flex; }
       .hero-visual { display: none; }
+      .hero-mascote { display: none; }
       h1 { font-size: 2rem; }
       .install-grid { grid-template-columns: 1fr; }
       .contato-grid { grid-template-columns: 1fr; }
@@ -993,7 +1090,7 @@
 
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-num">600<small style="font-size:1.2rem">MB</small></div>
+        <div class="stat-num">1<small style="font-size:1.6rem">GB</small></div>
         <div class="stat-label">Plano máximo</div>
       </div>
       <div class="stat">
@@ -1007,31 +1104,145 @@
     </div>
   </div>
 
-  <div class="hero-visual">
-    <div class="speed-card">
-      <div class="speed-icon"><i class="fas fa-bolt"></i></div>
-      <div class="speed-number" id="speed-counter">0</div>
-      <div class="speed-unit">Mbps de velocidade</div>
-      <div class="speed-bars">
-        <div class="bar-row">
-          <span>Download</span>
-          <div class="bar-track"><div class="bar-fill" style="width:95%"></div></div>
-          <span>95%</span>
-        </div>
-        <div class="bar-row">
-          <span>Upload</span>
-          <div class="bar-track"><div class="bar-fill" style="width:88%;animation-delay:.4s"></div></div>
-          <span>88%</span>
-        </div>
-        <div class="bar-row">
-          <span>Ping</span>
-          <div class="bar-track"><div class="bar-fill" style="width:98%;background:linear-gradient(90deg,#00E676,#00B040);animation-delay:.8s"></div></div>
-          <span style="color:#00E676">1ms</span>
-        </div>
-      </div>
-    </div>
+  <!-- Mascote SVG -->
+  <div class="hero-mascote">
+    <svg viewBox="0 0 320 490" xmlns="http://www.w3.org/2000/svg" aria-label="Mascote Link Fibra">
+      <defs>
+        <radialGradient id="hg" cx="38%" cy="30%"><stop offset="0%" stop-color="#60A5FA"/><stop offset="100%" stop-color="#2563EB"/></radialGradient>
+        <radialGradient id="bg" cx="38%" cy="25%"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#1D4ED8"/></radialGradient>
+        <radialGradient id="helm" cx="40%" cy="18%"><stop offset="0%" stop-color="#1E40AF"/><stop offset="100%" stop-color="#1E3A8A"/></radialGradient>
+        <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+
+      <!-- Ground shadow -->
+      <ellipse cx="160" cy="482" rx="95" ry="10" fill="rgba(0,150,255,0.18)"/>
+
+      <!-- Cape left -->
+      <path d="M95 235 Q55 330 82 430 L108 425 Q82 330 115 240Z" fill="#1E3A8A"/>
+      <!-- Cape right -->
+      <path d="M225 235 Q265 330 238 430 L212 425 Q238 330 205 240Z" fill="#1E3A8A"/>
+
+      <!-- Body -->
+      <rect x="92" y="228" width="136" height="175" rx="26" fill="url(#bg)"/>
+      <!-- Chest detail stripe -->
+      <rect x="138" y="244" width="44" height="90" rx="6" fill="#1E40AF" opacity="0.35"/>
+      <!-- Lightning bolt -->
+      <polygon points="162,252 147,284 162,284 144,318 178,276 162,276" fill="#FBBF24" filter="url(#glow)"/>
+
+      <!-- Left arm raised -->
+      <path d="M92 258 Q62 232 50 193" stroke="#3B82F6" stroke-width="38" fill="none" stroke-linecap="round"/>
+      <path d="M92 258 Q62 232 50 193" stroke="#60A5FA" stroke-width="28" fill="none" stroke-linecap="round"/>
+      <!-- Left fist -->
+      <circle cx="47" cy="183" r="23" fill="#3B82F6"/>
+      <circle cx="47" cy="183" r="19" fill="#60A5FA"/>
+      <rect x="33" y="175" width="28" height="16" rx="7" fill="#3B82F6"/>
+      <!-- Stars near fist -->
+      <text x="18" y="158" font-size="18" fill="#FBBF24" opacity="0.9">★</text>
+      <text x="5" y="195" font-size="12" fill="#00C8FF" opacity="0.7">✦</text>
+
+      <!-- Right arm with phone -->
+      <path d="M228 258 Q258 278 266 316" stroke="#3B82F6" stroke-width="38" fill="none" stroke-linecap="round"/>
+      <path d="M228 258 Q258 278 266 316" stroke="#60A5FA" stroke-width="28" fill="none" stroke-linecap="round"/>
+      <!-- Phone -->
+      <rect x="255" y="310" width="34" height="54" rx="7" fill="#1E3A8A"/>
+      <rect x="259" y="314" width="26" height="42" rx="4" fill="#00C8FF" opacity="0.65"/>
+      <!-- WiFi on screen -->
+      <circle cx="272" cy="345" r="3" fill="white"/>
+      <path d="M264 340 Q272 330 280 340" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M260 335 Q272 321 284 335" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <text x="278" y="300" font-size="12" fill="#FBBF24" opacity="0.8">★</text>
+
+      <!-- Legs -->
+      <path d="M124 398 L110 460" stroke="#1E3A8A" stroke-width="34" fill="none" stroke-linecap="round"/>
+      <path d="M196 398 L210 460" stroke="#1E3A8A" stroke-width="34" fill="none" stroke-linecap="round"/>
+      <!-- Boots -->
+      <ellipse cx="106" cy="464" rx="24" ry="13" fill="#1E3A8A"/>
+      <ellipse cx="214" cy="464" rx="24" ry="13" fill="#1E3A8A"/>
+      <path d="M84 464 Q106 458 128 464" stroke="#2563EB" stroke-width="3" fill="none"/>
+      <path d="M192 464 Q214 458 236 464" stroke="#2563EB" stroke-width="3" fill="none"/>
+
+      <!-- Neck -->
+      <rect x="135" y="222" width="50" height="18" rx="9" fill="#2563EB"/>
+
+      <!-- Head -->
+      <circle cx="160" cy="162" r="75" fill="url(#hg)"/>
+
+      <!-- Helmet dome -->
+      <path d="M85 158 Q85 84 160 84 Q235 84 235 158 L231 172 Q212 138 160 138 Q108 138 89 172Z" fill="url(#helm)"/>
+      <!-- Helmet shine -->
+      <path d="M96 148 Q96 100 160 100 Q224 100 224 148" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/>
+      <!-- Helmet rim -->
+      <path d="M85 165 Q85 158 160 158 Q235 158 235 165 L230 174 L90 174Z" fill="#1E3A8A"/>
+
+      <!-- WiFi icon on helmet top -->
+      <circle cx="160" cy="106" r="6" fill="#00C8FF" filter="url(#glow)"/>
+      <path d="M146 98 Q160 84 174 98" stroke="#00C8FF" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+      <path d="M135 90 Q160 70 185 90" stroke="#00C8FF" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M125 82 Q160 56 195 82" stroke="#00C8FF" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+
+      <!-- Headphone cups -->
+      <ellipse cx="86" cy="168" rx="13" ry="20" fill="#1E3A8A"/>
+      <ellipse cx="86" cy="168" rx="8" ry="13" fill="#2563EB"/>
+      <ellipse cx="234" cy="168" rx="13" ry="20" fill="#1E3A8A"/>
+      <ellipse cx="234" cy="168" rx="8" ry="13" fill="#2563EB"/>
+
+      <!-- Eyes (white) -->
+      <rect x="109" y="156" width="48" height="36" rx="11" fill="white"/>
+      <rect x="163" y="156" width="48" height="36" rx="11" fill="white"/>
+      <!-- Pupils -->
+      <circle cx="133" cy="174" r="13" fill="#1E3A8A"/>
+      <circle cx="187" cy="174" r="13" fill="#1E3A8A"/>
+      <circle cx="137" cy="170" r="6" fill="#111"/>
+      <circle cx="191" cy="170" r="6" fill="#111"/>
+      <!-- Eye shine -->
+      <circle cx="140" cy="167" r="3" fill="white"/>
+      <circle cx="194" cy="167" r="3" fill="white"/>
+
+      <!-- Glasses frames -->
+      <rect x="107" y="154" width="52" height="40" rx="11" fill="none" stroke="#FBBF24" stroke-width="4.5"/>
+      <rect x="161" y="154" width="52" height="40" rx="11" fill="none" stroke="#FBBF24" stroke-width="4.5"/>
+      <line x1="159" y1="174" x2="161" y2="174" stroke="#FBBF24" stroke-width="4"/>
+      <line x1="107" y1="173" x2="86" y2="170" stroke="#FBBF24" stroke-width="3.5"/>
+      <line x1="213" y1="173" x2="234" y2="170" stroke="#FBBF24" stroke-width="3.5"/>
+
+      <!-- Nose -->
+      <path d="M155 188 Q160 195 165 188" stroke="#60A5FA" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+
+      <!-- Big smile -->
+      <path d="M136 202 Q160 224 184 202" stroke="white" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+      <!-- Teeth -->
+      <path d="M140 204 Q160 221 180 204 L177 210 Q160 220 143 210Z" fill="white"/>
+
+      <!-- Cheek blush -->
+      <ellipse cx="112" cy="196" rx="13" ry="8" fill="#F472B6" opacity="0.28"/>
+      <ellipse cx="208" cy="196" rx="13" ry="8" fill="#F472B6" opacity="0.28"/>
+
+      <!-- Deco stars -->
+      <text x="264" y="78" font-size="24" fill="#FBBF24" opacity="0.85">★</text>
+      <text x="275" y="230" font-size="16" fill="#00C8FF" opacity="0.7">✦</text>
+      <text x="18" y="420" font-size="14" fill="#FBBF24" opacity="0.55">✦</text>
+    </svg>
   </div>
 </section>
+
+<!-- ══════════ COPA 2026 ══════════ -->
+<div class="copa-banner">
+  <div class="copa-inner">
+    <div class="copa-left">
+      <span class="copa-stars">★ ★ ★ ★ ★</span>
+      <h3 class="copa-title">A Copa chegou! <span>Assista ao Hexa</span></h3>
+      <p class="copa-sub">Streaming, transmissões ao vivo e videochamadas com quem você ama — tudo sem travar com a velocidade da Link Fibra.</p>
+    </div>
+    <div class="copa-center">
+      <span class="copa-trophy">🏆</span>
+    </div>
+    <div class="copa-right">
+      <a href="#planos" class="btn-copa">
+        <i class="fas fa-wifi"></i> Ver Planos
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════ PLANOS ══════════ -->
 <section id="planos">
@@ -1122,6 +1333,31 @@
       </ul>
       <a href="#" class="btn-plan" onclick="openWpp('600MB - R$120/mês', event)">
         <i class="fab fa-whatsapp"></i> Contratar
+      </a>
+    </div>
+
+    <!-- 1GB ULTRA -->
+    <div class="plan-card reveal" style="background:linear-gradient(145deg,rgba(251,191,36,0.12),rgba(0,71,211,0.18));border-color:rgba(251,191,36,0.45);">
+      <div class="plan-badge" style="background:linear-gradient(135deg,#FBBF24,#F59E0B);color:#1a0a00">ULTRA</div>
+      <div class="plan-icon" style="background:linear-gradient(135deg,#92400e,#D97706);border-color:rgba(251,191,36,0.3)">⚡</div>
+      <div class="plan-speed" style="background:linear-gradient(90deg,#FBBF24,#fff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">1</div>
+      <div class="plan-unit">Gbps</div>
+      <div class="plan-name">Plano Ultra Fibra</div>
+      <div class="plan-price-wrap">
+        <div class="plan-price-label">MENSALIDADE</div>
+        <div class="plan-price" style="align-items:center;margin-top:8px">
+          <span style="font-size:1.8rem;font-weight:900;color:#FBBF24;line-height:1">Consulte</span>
+        </div>
+      </div>
+      <ul class="plan-features">
+        <li><i class="fas fa-check-circle" style="color:#FBBF24"></i> 1 Gbps de velocidade</li>
+        <li><i class="fas fa-check-circle" style="color:#FBBF24"></i> ONU + Wi-Fi em comodato</li>
+        <li><i class="fas fa-check-circle" style="color:#FBBF24"></i> Instalação gratuita</li>
+        <li><i class="fas fa-check-circle" style="color:#FBBF24"></i> Suporte técnico Ultra VIP</li>
+        <li><i class="fas fa-check-circle" style="color:#FBBF24"></i> Fidelidade 12 meses</li>
+      </ul>
+      <a href="#" class="btn-plan" style="background:linear-gradient(135deg,#D97706,#F59E0B)" onclick="openWpp('1GB Ultra - quero saber o preço!', event)">
+        <i class="fab fa-whatsapp"></i> Consultar Preço
       </a>
     </div>
 
