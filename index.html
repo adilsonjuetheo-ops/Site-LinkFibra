@@ -466,6 +466,18 @@
       height: 100%;
       object-fit: cover;
       mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    /* Suprime controles nativos do browser no vídeo */
+    .hero-mascote video::-webkit-media-controls,
+    .hero-mascote video::-webkit-media-controls-enclosure,
+    .hero-mascote video::-webkit-media-controls-panel,
+    .hero-mascote video::-webkit-media-controls-overlay-play-button,
+    .hero-mascote video::-webkit-media-controls-start-playback-button {
+      display: none !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
 
     .plan-card {
@@ -1262,14 +1274,28 @@
       .app-phone-visual { display: none; }
       .footer-top { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
+      /* Copa banner em tablet */
+      .copa-inner { flex-direction: column; text-align: center; gap: 20px; }
+      .copa-right { width: 100%; display: flex; justify-content: center; }
     }
 
     @media (max-width: 600px) {
       section { padding: 64px 5%; }
       .plans-grid { grid-template-columns: 1fr; }
       .plan-card.featured { transform: none; }
-      .hero-cta { flex-direction: column; }
+      .hero-cta { flex-direction: column; align-items: flex-start; }
+      .hero-cta .btn-primary, .hero-cta .btn-outline { width: 100%; justify-content: center; }
+      .hero-stats { gap: 20px; }
+      .stat-num { font-size: 1.6rem; }
       .app-card { padding: 32px 24px; }
+      /* Copa: esconde troféu e ícone grande em telas pequenas */
+      .copa-trophy { font-size: 3rem; }
+      .copa-center { display: none; }
+      .copa-title { font-size: 1.3rem; }
+      /* Mapa full-width */
+      .mapa-frame { height: 260px; }
+      /* Vantagens 1 col */
+      .vantagens-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
