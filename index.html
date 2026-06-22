@@ -443,11 +443,9 @@
 
     /* ── MASCOTE HERO ─────────────────────── */
     .hero-mascote {
-      position: absolute; right: 4%; top: 50%;
-      transform: translateY(-50%);
-      width: min(380px, 40vw);
+      position: absolute; right: 0; bottom: 0;
+      width: min(420px, 42vw);
       z-index: 2;
-      filter: drop-shadow(0 0 40px rgba(0,200,255,0.25));
       animation: float 6s ease-in-out infinite;
     }
 
@@ -1104,9 +1102,10 @@
     </div>
   </div>
 
-  <!-- Mascote SVG -->
+  <!-- Mascote -->
   <div class="hero-mascote">
-    <svg viewBox="0 0 320 490" xmlns="http://www.w3.org/2000/svg" aria-label="Mascote Link Fibra">
+    <img src="mascote.png" alt="Mascote Link Fibra" style="width:100%;display:block;mix-blend-mode:screen;"/>
+    <svg viewBox="0 0 320 490" xmlns="http://www.w3.org/2000/svg" aria-label="" style="display:none">
       <defs>
         <radialGradient id="hg" cx="38%" cy="30%"><stop offset="0%" stop-color="#60A5FA"/><stop offset="100%" stop-color="#2563EB"/></radialGradient>
         <radialGradient id="bg" cx="38%" cy="25%"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#1D4ED8"/></radialGradient>
@@ -1609,6 +1608,15 @@
   <div class="footer-bottom">
     <p>© 2025 <span>Link Fibra Óptica</span>. Todos os direitos reservados.</p>
     <p class="footer-cnpj">CNPJ: 13.390.798/0001-77 &nbsp;|&nbsp; Link Sistema de Telecomunicações e Informática LTDA</p>
+  </div>
+  <div style="text-align:center;padding-top:16px;border-top:1px solid rgba(0,200,255,0.08);margin-top:16px">
+    <p style="font-size:0.75rem;color:var(--text-muted)">
+      Desenvolvido por
+      <a href="https://www.adilsondev.com.br" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600;transition:color 0.2s"
+         onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--accent)'">
+        www.adilsondev.com.br
+      </a>
+    </p>
   </div>
 </footer>
 
