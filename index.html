@@ -593,6 +593,153 @@
       display: flex; align-items: center; justify-content: center; gap: 8px;
     }
 
+    /* ── PLAN TV item ──────────────────────────── */
+    .plan-tv {
+      color: var(--accent) !important;
+      font-weight: 600;
+      border-top: 1px solid rgba(0,200,255,0.15);
+      margin-top: 6px;
+      padding-top: 10px;
+    }
+    .plan-tv i { color: var(--accent) !important; }
+
+    /* ── TV STREAMING SECTION ──────────────────── */
+    #tv {
+      background: linear-gradient(180deg, var(--bg) 0%, #020d38 50%, var(--bg) 100%);
+    }
+
+    .tv-header { text-align: center; }
+    .tv-header .section-sub { margin: 0 auto 56px; }
+
+    .tv-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* TV screen mockup */
+    .tv-screen-wrap { display: flex; justify-content: center; }
+
+    .tv-screen {
+      display: flex; flex-direction: column; align-items: center;
+      position: relative;
+    }
+
+    .tv-screen-inner {
+      width: 340px; height: 210px;
+      background: #020514;
+      border: 3px solid rgba(0,200,255,0.4);
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 40px rgba(0,200,255,0.2), inset 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    .tv-base {
+      width: 340px; height: 10px;
+      background: linear-gradient(90deg, rgba(0,200,255,0.2), rgba(0,71,211,0.3), rgba(0,200,255,0.2));
+      border-radius: 0 0 4px 4px;
+    }
+
+    .tv-stand {
+      width: 80px; height: 24px;
+      background: linear-gradient(180deg, rgba(0,200,255,0.15), rgba(0,71,211,0.1));
+      border-radius: 0 0 8px 8px;
+      clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    }
+
+    /* Channel carousel */
+    .tv-channel-carousel {
+      width: 100%; height: 100%;
+      position: relative;
+    }
+
+    .tv-channel-slide {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 14px;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+    }
+
+    .tv-channel-slide.active { opacity: 1; }
+
+    .tv-ch-icon {
+      width: 70px; height: 70px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; color: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .tv-channel-slide span {
+      font-size: 1.1rem; font-weight: 700; color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    .tv-screen-overlay {
+      position: absolute; top: 12px; right: 12px;
+    }
+
+    .tv-live-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(229,9,20,0.9);
+      color: #fff; font-size: 0.7rem; font-weight: 800;
+      padding: 4px 10px; border-radius: 4px;
+      letter-spacing: 1px;
+    }
+
+    .tv-live-dot {
+      width: 7px; height: 7px;
+      background: #fff; border-radius: 50%;
+      animation: blink 1s ease-in-out infinite;
+    }
+
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+    /* Benefit cards */
+    .tv-benefits {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .tv-ben-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 20px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .tv-ben-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .tv-ben-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, rgba(0,71,211,0.3), rgba(0,200,255,0.15));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .tv-ben-card h4 {
+      font-size: 0.95rem; font-weight: 700; color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .tv-ben-card p {
+      font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;
+    }
+
+    .tv-cta { text-align: center; margin-top: 52px; }
+
     /* ── INSTALAÇÃO ────────────────────────────── */
     #instalacao {
       background: linear-gradient(135deg, rgba(0, 71, 211, 0.12) 0%, rgba(0, 200, 255, 0.04) 100%);
@@ -1277,6 +1424,10 @@
       /* Copa banner em tablet */
       .copa-inner { flex-direction: column; text-align: center; gap: 20px; }
       .copa-right { width: 100%; display: flex; justify-content: center; }
+      /* TV section em tablet */
+      .tv-body { grid-template-columns: 1fr; gap: 40px; }
+      .tv-screen-wrap { order: -1; }
+      .tv-screen-inner { width: 280px; height: 175px; }
     }
 
     @media (max-width: 600px) {
@@ -1292,6 +1443,9 @@
       .copa-trophy { font-size: 3rem; }
       .copa-center { display: none; }
       .copa-title { font-size: 1.3rem; }
+      /* TV benefits 1 col no mobile */
+      .tv-benefits { grid-template-columns: 1fr; }
+      .tv-screen-inner { width: 260px; height: 162px; }
       /* Mapa full-width */
       .mapa-frame { height: 260px; }
       /* Vantagens 1 col */
@@ -1311,6 +1465,7 @@
 
   <nav id="nav">
     <a href="#planos">Planos</a>
+    <a href="#tv">TV Streaming</a>
     <a href="#instalacao">Instalação</a>
     <a href="#vantagens">Vantagens</a>
     <a href="#app">App</a>
@@ -1521,7 +1676,7 @@
     <div class="section-tag">Escolha o seu</div>
     <h2>Planos de <span>Internet Fibra</span></h2>
     <p class="section-sub">
-      Todos os planos incluem instalação gratuita e equipamento ONU + Wi-Fi em comodato (empréstimo).
+      Todos os planos incluem instalação gratuita, ONU + Wi-Fi em comodato e <strong style="color:var(--accent)">TV por Streaming</strong>.
       Fidelidade de 12 meses.
     </p>
   </div>
@@ -1548,6 +1703,7 @@
         <li><i class="fas fa-check-circle"></i> Instalação gratuita</li>
         <li><i class="fas fa-check-circle"></i> Suporte técnico</li>
         <li><i class="fas fa-check-circle"></i> Fidelidade 12 meses</li>
+        <li class="plan-tv"><i class="fas fa-tv"></i> TV por Streaming incluso</li>
       </ul>
       <a href="#" class="btn-plan" onclick="openWpp('200MB - R$80/mês', event)">
         <i class="fab fa-whatsapp"></i> Contratar
@@ -1575,6 +1731,7 @@
         <li><i class="fas fa-check-circle"></i> Instalação gratuita</li>
         <li><i class="fas fa-check-circle"></i> Suporte técnico prioritário</li>
         <li><i class="fas fa-check-circle"></i> Fidelidade 12 meses</li>
+        <li class="plan-tv"><i class="fas fa-tv"></i> TV por Streaming incluso</li>
       </ul>
       <a href="#" class="btn-plan" onclick="openWpp('400MB - R$100/mês', event)">
         <i class="fab fa-whatsapp"></i> Contratar
@@ -1601,6 +1758,7 @@
         <li><i class="fas fa-check-circle"></i> Instalação gratuita</li>
         <li><i class="fas fa-check-circle"></i> Suporte técnico VIP</li>
         <li><i class="fas fa-check-circle"></i> Fidelidade 12 meses</li>
+        <li class="plan-tv"><i class="fas fa-tv"></i> TV por Streaming incluso</li>
       </ul>
       <a href="#" class="btn-plan" onclick="openWpp('600MB - R$120/mês', event)">
         <i class="fab fa-whatsapp"></i> Contratar
@@ -1626,6 +1784,7 @@
         <li><i class="fas fa-check-circle" style="color:#FBBF24"></i> Instalação gratuita</li>
         <li><i class="fas fa-check-circle" style="color:#FBBF24"></i> Suporte técnico Ultra VIP</li>
         <li><i class="fas fa-check-circle" style="color:#FBBF24"></i> Fidelidade 12 meses</li>
+        <li class="plan-tv" style="color:#FBBF24"><i class="fas fa-tv" style="color:#FBBF24"></i> TV por Streaming incluso</li>
       </ul>
       <a href="#" class="btn-plan" style="background:linear-gradient(135deg,#D97706,#F59E0B)" onclick="openWpp('1GB Ultra - quero saber o preço!', event)">
         <i class="fab fa-whatsapp"></i> Consultar Preço
@@ -1638,6 +1797,86 @@
     <i class="fas fa-info-circle" style="color:var(--accent)"></i>
     Planos com fidelidade de 12 meses &nbsp;|&nbsp; Instalação e equipamento sem custo adicional
   </p>
+</section>
+
+<!-- ══════════ TV STREAMING ══════════ -->
+<section id="tv">
+  <div class="tv-header reveal">
+    <div class="section-tag">Incluso em todos os planos</div>
+    <h2>TV por <span>Streaming</span></h2>
+    <p class="section-sub">Assista seus canais favoritos em qualquer tela — TV, celular, tablet ou computador. Sem antena, sem parabólica.</p>
+  </div>
+
+  <div class="tv-body reveal">
+    <!-- Visual da TV / dispositivos -->
+    <div class="tv-screen-wrap">
+      <div class="tv-screen">
+        <div class="tv-screen-inner">
+          <div class="tv-channel-carousel">
+            <div class="tv-channel-slide active">
+              <div class="tv-ch-icon" style="background:linear-gradient(135deg,#e50914,#b20710)"><i class="fas fa-film"></i></div>
+              <span>Filmes &amp; Séries</span>
+            </div>
+            <div class="tv-channel-slide">
+              <div class="tv-ch-icon" style="background:linear-gradient(135deg,#007bff,#0056b3)"><i class="fas fa-futbol"></i></div>
+              <span>Esportes</span>
+            </div>
+            <div class="tv-channel-slide">
+              <div class="tv-ch-icon" style="background:linear-gradient(135deg,#fd7e14,#dc3545)"><i class="fas fa-newspaper"></i></div>
+              <span>Notícias</span>
+            </div>
+            <div class="tv-channel-slide">
+              <div class="tv-ch-icon" style="background:linear-gradient(135deg,#20c997,#0ca678)"><i class="fas fa-child"></i></div>
+              <span>Infantil</span>
+            </div>
+            <div class="tv-channel-slide">
+              <div class="tv-ch-icon" style="background:linear-gradient(135deg,#6f42c1,#5a32a3)"><i class="fas fa-music"></i></div>
+              <span>Entretenimento</span>
+            </div>
+            <div class="tv-channel-slide">
+              <div class="tv-ch-icon" style="background:linear-gradient(135deg,#00C8FF,#0047D3)"><i class="fas fa-globe"></i></div>
+              <span>Internacional</span>
+            </div>
+          </div>
+          <div class="tv-screen-overlay">
+            <div class="tv-live-badge"><span class="tv-live-dot"></span> AO VIVO</div>
+          </div>
+        </div>
+        <div class="tv-base"></div>
+        <div class="tv-stand"></div>
+      </div>
+    </div>
+
+    <!-- Cards de benefícios -->
+    <div class="tv-benefits">
+      <div class="tv-ben-card">
+        <div class="tv-ben-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h4>Qualquer Dispositivo</h4>
+        <p>TV, celular, tablet e computador. Assista onde estiver.</p>
+      </div>
+      <div class="tv-ben-card">
+        <div class="tv-ben-icon"><i class="fas fa-wifi"></i></div>
+        <h4>Sem Antena</h4>
+        <p>Tudo via internet fibra óptica. Sem parabólica, sem ruído.</p>
+      </div>
+      <div class="tv-ben-card">
+        <div class="tv-ben-icon"><i class="fas fa-infinity"></i></div>
+        <h4>Incluso no Plano</h4>
+        <p>Sem custo extra. TV por Streaming incluso em todos os planos.</p>
+      </div>
+      <div class="tv-ben-card">
+        <div class="tv-ben-icon"><i class="fas fa-play-circle"></i></div>
+        <h4>Canais ao Vivo</h4>
+        <p>Filmes, esportes, notícias, infantil e muito mais, ao vivo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tv-cta reveal">
+    <a href="https://wa.me/5533991180006?text=Olá!%20Quero%20saber%20mais%20sobre%20a%20TV%20por%20Streaming%20inclusa%20nos%20planos%20da%20Link%20Fibra!%20😊" target="_blank" class="btn-primary">
+      <i class="fab fa-whatsapp"></i> Saber Mais sobre a TV
+    </a>
+  </div>
 </section>
 
 <!-- ══════════ INSTALAÇÃO ══════════ -->
@@ -2003,6 +2242,18 @@
     bubbleOpen = !bubbleOpen;
     document.getElementById('wppBubble').classList.toggle('active', bubbleOpen);
   }
+
+  /* ── TV Channel Carousel ─────────────── */
+  (function() {
+    const slides = document.querySelectorAll('.tv-channel-slide');
+    if (!slides.length) return;
+    let current = 0;
+    setInterval(function() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 2200);
+  })();
 
   function openWpp(plan, e) {
     e.preventDefault();
